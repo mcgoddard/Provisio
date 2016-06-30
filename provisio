@@ -9,6 +9,14 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
+if command -v perl >/dev/null 2>&1
+    then
+        :
+    else
+        echo "INFO: Installing perl"
+        provisio install yum perl
+    fi
+
 #
 # NB: $BASE directory may exist on a shared host drive
 #     but $SCRATCH always exists inside an image
